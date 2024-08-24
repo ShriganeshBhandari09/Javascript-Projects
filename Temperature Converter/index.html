@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Temperature Converter</h1>
+      <form onsubmit="return converter()">
+        <section>
+          <label for="temp">Enter the Temperature(Celsius):</label><br /><br />
+          <input type="number" name="temp" id="temp" />
+          <p id="temperature_type"></p>
+        </section>
+        <section>
+          <label for="temptype">Convert to:</label><br /><br />
+          <select name="temptype" id="temptype">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+          </select>
+        </section>
+        <br />
+        <section>
+          <button type="submit" class="button">Convert</button>
+        </section>
+        <section>
+          <h2 id="converted_value"></h2>
+        </section>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

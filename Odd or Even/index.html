@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Odd or Even</h1>
+      <form onsubmit="return processForm()">
+        <section>
+          <label for="number">Enter the Number</label><br />
+          <input type="number step=1" name="number" id="number" />
+        </section>
+        <section>
+          <button type="submit" class="button">Check</button>
+        </section>
+      </form>
+      <section>
+        <h2>The given number is <span id="num1"></span></h2>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
