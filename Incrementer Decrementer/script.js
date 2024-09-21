@@ -1,18 +1,23 @@
-var num = 0;
+const number = document.getElementById("number")
+
 function increment() {
+  var num = number.value;
   num++;
-  document.getElementById("number").innerHTML = num;
+  number.value = num;
   console.log(num);
-  return false;
 }
 
 function decrement() {
+  var num = number.value;
   if (num == 0) {
-    num = 0
+    num = 0;
   } else {
     num--;
-    document.getElementById("number").innerHTML = num;
+    number.value = num;
     console.log(num);
   }
-  return false;
+}
+
+function reset() {
+  number.value = 0;
 }

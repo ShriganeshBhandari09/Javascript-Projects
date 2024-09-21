@@ -2,36 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Temperature Converter</h1>
-      <form onsubmit="return converter()">
-        <section>
-          <label for="temp">Enter the Temperature(Celsius):</label><br /><br />
-          <input type="number" name="temp" id="temp" />
-          <p id="temperature_type"></p>
-        </section>
-        <section>
-          <label for="temptype">Convert to:</label><br /><br />
-          <select name="temptype" id="temptype">
-            <option value="celsius">Celsius</option>
-            <option value="fahrenheit">Fahrenheit</option>
-            <option value="kelvin">Kelvin</option>
-          </select>
-        </section>
-        <br />
-        <section>
-          <button type="submit" class="button">Convert</button>
-        </section>
-        <section>
-          <h2 id="converted_value"></h2>
-        </section>
-      </form>
-    </div>
+    <section class="main-container">
+      <div class="left-container">
+        <h1>Temperature Converter</h1>
+        <form onsubmit="return converter()">
+          <section>
+            <label for="temperature">Degree</label
+            ><br /><br />
+            <div class="input-container">
+              <input type="number" name="temperature" id="temperature" />
+              <select name="temptype" id="given_temptype">
+                <option value="given_celsius">C</option>
+                <option value="given_fahrenheit">F</option>
+                <option value="given_kelvin">K</option>
+              </select>
+            </div>
+          </section>
+          <section>
+            <label for="convert_temptype">Convert In</label><br /><br />
+            <select name="temptype" id="convert_temptype">
+              <option value="celsius">Celsius</option>
+              <option value="fahrenheit">Fahrenheit</option>
+              <option value="kelvin">Kelvin</option>
+            </select>
+          </section>
+          <br />
+          <section>
+            <button type="submit" class="button">Convert</button>
+          </section>
+        </form>
+      </div>
+      <div class="right-container">
+        <h2 id="converted_value"></h2>
+      </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>

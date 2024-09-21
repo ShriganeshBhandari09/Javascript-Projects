@@ -1,31 +1,61 @@
 function converter() {
-    let temp = document.getElementById("temp").value;
-    let temptype = document.getElementById("temptype").value;
-    if (temptype == "celsius") {
-      var cel = temp;
-      document.getElementById(
-        "converted_value"
-      ).innerHTML = `Celsius value is ${cel} C.`;
-      // document.getElementById("temperature_type").innerHTML =
-      //   "The given value is taken as Fahrenheit";
-    } else if (temptype == "fahrenheit") {
-      var far = temp * (9 / 5) + 32;
-      document.getElementById(
-        "converted_value"
-      ).innerHTML = `Fahrenheit value is ${far} F.`;
-      // document.getElementById("temperature_type").innerHTML =
-      //   "The given value is taken as Celsius";
-    } else if (temptype == "kelvin") {
-      var kel = temp + 273.15;
-      document.getElementById(
-        "converted_value"
-      ).innerHTML = `Kelvin value is ${kel} K.`;
-      // document.getElementById("temperature_type").innerHTML =
-      //   "The given value is taken as Celsius";
-    } else {
-      document.getElementById("converted_value").innerHTML = Invalid;
-    }
-  
+  let temperature = parseFloat(document.getElementById("temperature").value);
+  let givenTempType = document.getElementById("given_temptype").value;
+  let convertTempType = document.getElementById("convert_temptype").value;
+  let answer = document.getElementById("converted_value");
+
+  // Validation for temperature input
+  if (isNaN(temperature)) {
+    answer.innerHTML = "Please enter a valid number.";
     return false;
   }
-  
+
+  // Conversion functions
+  function toFahrenheit(celsius) {
+    return celsius * (9 / 5) + 32;
+  }
+
+  function toKelvin(celsius) {
+    return celsius + 273.15;
+  }
+
+  function fromFahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * (5 / 9);
+  }
+
+  function fromKelvinToCelsius(kelvin) {
+    return kelvin - 273.15;
+  }
+
+  // Convert based on types
+  let result;
+  if (givenTempType === "given_celsius") {
+    if (convertTempType === "fahrenheit") {
+      result = toFahrenheit(temperature);
+      answer.innerHTML = `${result.toFixed(2)} °F`;
+    } else if (convertTempType === "kelvin") {
+      result = toKelvin(temperature);
+      answer.innerHTML = `${result.toFixed(2)} K`;
+    }
+  } else if (givenTempType === "given_fahrenheit") {
+    if (convertTempType === "celsius") {
+      result = fromFahrenheitToCelsius(temperature);
+      answer.innerHTML = `${result.toFixed(2)} °C`;
+    } else if (convertTempType === "kelvin") {
+      result = toKelvin(fromFahrenheitToCelsius(temperature));
+      answer.innerHTML = `${result.toFixed(2)} K`;
+    }
+  } else if (givenTempType === "given_kelvin") {
+    if (convertTempType === "celsius") {
+      result = fromKelvinToCelsius(temperature);
+      answer.innerHTML = `${result.toFixed(2)} °C`;
+    } else if (convertTempType === "fahrenheit") {
+      result = toFahrenheit(fromKelvinToCelsius(temperature));
+      answer.innerHTML = `${result.toFixed(2)} °F`;
+    }
+  } else {
+    answer.innerHTML = "Invalid temperature type.";
+  }
+
+  return false;
+}
